@@ -1,0 +1,56 @@
+Several solutions exist depending on the desired behavior. Here are two:
+
+**1. Remove `pointer-events: none` (if possible):**
+
+If the parent element doesn't require `pointer-events: none` for other reasons, removing it is the simplest solution.
+
+```css
+.parent {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  /* pointer-events: none; Removed */
+}
+
+.child {
+  width: 50px;
+  height: 50px;
+  background-color: lightcoral;
+}
+
+.parent:hover {
+  background-color: blue;
+}
+
+.child:hover {
+  background-color: red;
+}
+```
+
+**2. Use `pointer-events: auto` on the child:**
+
+If removing `pointer-events: none` from the parent isn't feasible, you can explicitly set `pointer-events: auto` on the child element to allow event propagation.
+
+```css
+.parent {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  pointer-events: none;
+}
+
+.child {
+  width: 50px;
+  height: 50px;
+  background-color: lightcoral;
+  pointer-events: auto; /* Allows hover events */
+}
+
+.parent:hover {
+  background-color: blue;
+}
+
+.child:hover {
+  background-color: red;
+}
+```
