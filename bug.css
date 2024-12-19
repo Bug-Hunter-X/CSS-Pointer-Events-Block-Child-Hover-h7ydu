@@ -1,0 +1,24 @@
+The following CSS code snippet demonstrates an issue where the expected behavior of the `:hover` pseudo-class does not occur on the nested element because the parent element's `pointer-events: none;` property blocks event propagation to children elements.
+
+```css
+.parent {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  pointer-events: none; /* This line prevents hover effects on children */
+}
+
+.child {
+  width: 50px;
+  height: 50px;
+  background-color: lightcoral;
+}
+
+.parent:hover { /* Hover effect on parent */
+  background-color: blue;
+}
+
+.child:hover { /* Hover effect on child, but will not trigger because of parent */
+  background-color: red;
+}
+```
